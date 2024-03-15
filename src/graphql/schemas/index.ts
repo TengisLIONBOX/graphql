@@ -1,5 +1,5 @@
 import { mergeTypeDefs } from "graphql-tools-merge-typedefs";
-import { todoCategoryTypeDefs } from "./todo-category-schema";
-import { todoTypeDefs } from "./todo-schema";
+import { CarentCategoryTypeDefs } from "./carent-category-schema";
+import { CarTypeDefs } from "./carent-schema";
 
-export const typeDefs = mergeTypeDefs([todoCategoryTypeDefs, todoTypeDefs]);
+export const typeDefs = mergeTypeDefs([CarentCategoryTypeDefs, CarTypeDefs]);

@@ -1,5 +1,5 @@
-import { todoMutations } from "./todo-mutations";
+import { carMutations } from "./carent-mutations";
 
 export const Mutation = {
-  ...todoMutations,
+  ...carMutations,
 };

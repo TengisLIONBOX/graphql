@@ -1,5 +1,5 @@
-import { todoQueries } from "./todo-queries";
+import { CarentQueries } from "./carent-queries";
 
 export const Query = {
-  ...todoQueries,
+  ...CarentQueries,
 };

@@ -1,0 +1,37 @@
+fragment CarFields on Car {
+  id
+  name
+  rented
+}
+query GetCarList {
+  getCarList {
+    ...CarFields
+  }
+}
+
+query GetCar($getCarId: ID) {
+  getCar(id: $getCarId) {
+    ...CarFields
+  }
+}
+
+mutation CreateCar($input: CarCreateInput!) {
+  createCar(input: $input) {
+    ...CarFields
+  }
+}
+
+mutation DeleteCar($id: ID!) {
+  deleteCar(id: $id) {
+    ...CarFields
+  }
+}
+
+mutation UpdateCar($input: CarUpdateInput!) {
+  updateCar(input: $input) {
+    id
+    name
+    price
+    rented
+  }
+}

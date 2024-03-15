@@ -2,8 +2,8 @@ import { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
   schema: [
-    "./src/graphql/schemas/todo-category-schema.ts",
-    "./src/graphql/schemas/todo-schema.ts",
+    "./src/graphql/schemas/carent-category-schema.ts",
+    "./src/graphql/schemas/carent-schema.ts",
   ],
   documents: ["./src/graphql/documents/**/*.graphql"],
   generates: {
