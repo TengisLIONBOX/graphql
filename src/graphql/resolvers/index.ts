@@ -1,6 +1,11 @@
-import { Mutation } from "./mutations";
-import { Query } from "./queries";
+import { carQueries } from "./queries/carent-queries";
+import { carMutations } from "./mutations/carent-mutations";
+
 export const resolvers = {
-  Query,
-  Mutation,
+  Query: {
+    ...carQueries,
+  },
+  Mutation: {
+    ...carMutations,
+  },
 };

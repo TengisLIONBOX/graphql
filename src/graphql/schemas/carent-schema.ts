@@ -47,14 +47,13 @@ export const CarTypeDefs = gql`
     name: String
     price: Float
     description: String
-    categoryId: ID
     rented: Boolean
   }
 
   type Query {
     getCarList: [Car!]!
-    getCar(id: ID): Car
-    getUserCar(renterId: String): Car
+    getCarById(id: ID): Car
+    getCarsByUser(renterId: String): Car
   }
   type Mutation {
     createCar(input: CarCreateInput!): Car!

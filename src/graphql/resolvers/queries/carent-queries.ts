@@ -1,12 +1,12 @@
 import {
-  getCarById,
   getCarList,
-  getUserCarById,
+  getCarById,
+  getCarsByUser,
 } from "@/services/carent-service";
 
-export const CarentQueries = {
+export const carQueries = {
   getCarList: () => getCarList(),
-  getCar: (_: unknown, { id }: { id: string }) => getCarById(id),
-  getUserCar: (_: unknown, { renterId }: { renterId: string }) =>
-    getUserCarById(renterId),
+  getCarById: (_: unknown, { id }: { id: string }) => getCarById(id),
+  getCarsByUser: (_: unknown, { renterId }: { renterId: string }) =>
+    getCarsByUser(renterId),
 };
