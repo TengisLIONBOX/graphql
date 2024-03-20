@@ -1,4 +1,3 @@
-
 import { createCar, deleteCar, updateCar } from "@/services/carent-service";
 export const carMutations = {
   createCar: (
@@ -9,14 +8,15 @@ export const carMutations = {
       input: {
         name: string;
         address: string;
-        latitude: number;
-        longitude: number;
+        latitude: string;
+        longitude: string;
         brand: string;
         color: string;
         kilometers: number;
         transmission: string;
         seats: number;
         fuel: string;
+        engine: number;
         frontimg: string;
         backimg: string;
         description: string;
@@ -37,14 +37,15 @@ export const carMutations = {
         id: string;
         name: string;
         address: string;
-        latitude: number;
-        longitude: number;
+        latitude: string;
+        longitude: string;
         brand: string;
         color: string;
         kilometers: number;
         transmission: string;
         seats: number;
         fuel: string;
+        engine: number;
         frontimg: string;
         backimg: string;
         description: string;

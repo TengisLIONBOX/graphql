@@ -13,9 +13,10 @@ datasource db {
 model Car {
   id       String   @id @default(nanoid()) @map("_id")
   name    String   
+  engine Int
   address String
-  latitude Int
-  longitude Int
+  latitude String
+  longitude String
   brand String
   color String
   kilometers Int

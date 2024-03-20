@@ -4,7 +4,7 @@ export const CarTypeDefs = gql`
   type Car {
     id: ID!
     name: String!
-    price: Float!
+    price: Int!
     fuel: String!
     color: String!
     address: String!
@@ -12,9 +12,10 @@ export const CarTypeDefs = gql`
     description: String!
     transmission: String!
     seats: Int!
-    kilometer: Float!
-    latitude: Float!
-    longitude: Float!
+    kilometers: Int!
+    engine: Int!
+    latitude: String!
+    longitude: String!
     frontimg: String!
     backimg: String!
     brand: String!
@@ -24,7 +25,7 @@ export const CarTypeDefs = gql`
 
   input CarCreateInput {
     name: String!
-    price: Float!
+    price: Int!
     fuel: String!
     color: String!
     address: String!
@@ -32,9 +33,10 @@ export const CarTypeDefs = gql`
     description: String!
     transmission: String!
     seats: Int!
-    kilometer: Float!
-    latitude: Float!
-    longitude: Float!
+    engine: Int!
+    kilometers: Int!
+    latitude: String!
+    longitude: String!
     frontimg: String!
     backimg: String!
     brand: String!
