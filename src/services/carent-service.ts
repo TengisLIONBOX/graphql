@@ -81,6 +81,23 @@ export const getCarById = async (id: string): Promise<Car | null> => {
   }
 };
 
+export const getCarsByBrand = async (brand: string): Promise<Car[]> => {
+  try {
+    const carBrands = await prisma.car.findMany({
+      where: {
+        brand,
+      },
+    });
+
+    return carBrands;
+  } catch (error) {
+    console.error(error);
+    throw new GraphQLError("Error fetching cars by brand");
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
 export const updateCar = async (
   id: string,
   data: Prisma.CarUpdateInput
@@ -109,11 +126,11 @@ export const deleteCar = async (id: string): Promise<Car | null> => {
   }
 };
 
-export const getCarsByUser = async (userId: string): Promise<Car[]> => {
+export const getCarsByUser = async (renterId: string): Promise<Car[]> => {
   try {
     const userCars = await prisma.car.findMany({
       where: {
-        renterId: userId,
+        renterId,
       },
     });
     return userCars;
