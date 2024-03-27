@@ -82,13 +82,16 @@ export const getCarById = async (id: string): Promise<Car | null> => {
 };
 
 export const getCarsByBrand = async (brand: string): Promise<Car[]> => {
+  if (!brand) {
+    throw new GraphQLError("Brand argument must not be null");
+  }
+
   try {
     const carBrands = await prisma.car.findMany({
       where: {
         brand,
       },
     });
-
     return carBrands;
   } catch (error) {
     console.error(error);
