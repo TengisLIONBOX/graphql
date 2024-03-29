@@ -64,6 +64,10 @@ import { GraphQLError } from "graphql";
 export const getCarList = async () => {
   try {
     const result = await prisma.car.findMany();
+    const reversedCars = result.reverse();
+
+    return reversedCars;
+
     return result;
   } catch (error) {
     console.error(error);
@@ -92,7 +96,9 @@ export const getCarsByBrand = async (brand: string): Promise<Car[]> => {
         brand,
       },
     });
-    return carBrands;
+    const reversedCarsByBrand = carBrands.reverse();
+
+    return reversedCarsByBrand;
   } catch (error) {
     console.error(error);
     throw new GraphQLError("Error fetching cars by brand");
@@ -136,10 +142,15 @@ export const getCarsByUser = async (renterId: string): Promise<Car[]> => {
         renterId,
       },
     });
-    return userCars;
+
+    const reversedUserCars = userCars.reverse();
+
+    return reversedUserCars;
   } catch (error) {
     console.error(error);
     throw new GraphQLError("Error fetching user cars");
+  } finally {
+    await prisma.$disconnect();
   }
 };
 
