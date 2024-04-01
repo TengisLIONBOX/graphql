@@ -60,6 +60,7 @@
 import { prisma } from "@/utils/prisma";
 import { Car, Prisma } from "@prisma/client";
 import { GraphQLError } from "graphql";
+import { clerkClient } from "@clerk/nextjs";
 
 export const getCarList = async () => {
   try {
@@ -161,5 +162,15 @@ export const createCar = async (input: Prisma.CarCreateInput) => {
   } catch (error) {
     console.error(error);
     throw new GraphQLError("Error fetching user cars");
+  }
+};
+export const getUserById = async (id: string) => {
+  try {
+    const clerkUser = await clerkClient.users.getUser(id);
+
+    return clerkUser;
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    throw new Error("Could not fetch user");
   }
 };

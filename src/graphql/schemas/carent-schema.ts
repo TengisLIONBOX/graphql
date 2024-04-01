@@ -22,6 +22,10 @@ export const CarTypeDefs = gql`
     renterId: String!
     rented: Boolean!
   }
+  type User {
+    id: ID!
+    username: String!
+  }
 
   input CarCreateInput {
     name: String!
@@ -57,6 +61,7 @@ export const CarTypeDefs = gql`
     getCarById(id: ID): Car
     getCarsByUser(renterId: String): [Car]
     getCarsByBrand(brand: String): [Car]
+    getUserById(id: String): User
   }
   type Mutation {
     createCar(input: CarCreateInput!): Car!
