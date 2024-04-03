@@ -1,3 +1,4 @@
+import { getRentedCars } from "./../../services/carent-service";
 import gql from "graphql-tag";
 
 export const CarTypeDefs = gql`
@@ -21,6 +22,8 @@ export const CarTypeDefs = gql`
     brand: String!
     renterId: String!
     rented: Boolean!
+    rentedId: String
+    rentedAt: String
   }
   type User {
     id: ID!
@@ -46,14 +49,18 @@ export const CarTypeDefs = gql`
     brand: String!
     renterId: String!
     rented: Boolean!
+    rentedId: String!
+    rentedAt: String!
   }
 
   input CarUpdateInput {
-    id: ID!
+    id: ID
     name: String
     price: Float
     description: String
     rented: Boolean
+    rentedId: String
+    rentedAt: String
   }
 
   type Query {
@@ -62,6 +69,7 @@ export const CarTypeDefs = gql`
     getCarsByUser(renterId: String): [Car]
     getCarsByBrand(brand: String): [Car]
     getUserById(id: String): User
+    getRentedCars(renterId: String): [Car]
   }
   type Mutation {
     createCar(input: CarCreateInput!): Car!

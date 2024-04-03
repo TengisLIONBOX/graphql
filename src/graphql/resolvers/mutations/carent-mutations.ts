@@ -24,6 +24,8 @@ export const carMutations = {
         price: number;
         renterId: string;
         rented: boolean;
+        rentedId: string;
+        rentedAt: string;
       };
     }
   ) => createCar(input),
@@ -53,10 +55,15 @@ export const carMutations = {
         price: number;
         renterId: string;
         rented: boolean;
+        rentedId: string;
+        rentedAt: string;
       };
     }
   ) => {
     const updatedCar = await updateCar(input.id, input);
+    if (!updatedCar) {
+      throw new Error("Failed to update car");
+    }
     return updatedCar;
   },
 };

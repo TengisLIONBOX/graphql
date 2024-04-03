@@ -64,12 +64,14 @@ import { clerkClient } from "@clerk/nextjs";
 
 export const getCarList = async () => {
   try {
-    const result = await prisma.car.findMany();
+    const result = await prisma.car.findMany({
+      where: {
+        rented: false,
+      },
+    });
     const reversedCars = result.reverse();
 
     return reversedCars;
-
-    return result;
   } catch (error) {
     console.error(error);
     throw new GraphQLError("Error fetching cars");
@@ -95,6 +97,7 @@ export const getCarsByBrand = async (brand: string): Promise<Car[]> => {
     const carBrands = await prisma.car.findMany({
       where: {
         brand,
+        rented: false,
       },
     });
     const reversedCarsByBrand = carBrands.reverse();
@@ -110,12 +113,13 @@ export const getCarsByBrand = async (brand: string): Promise<Car[]> => {
 
 export const updateCar = async (
   id: string,
-  data: Prisma.CarUpdateInput
+  data: Prisma.CarUpdateInput & { id: string }
 ): Promise<Car | null> => {
   try {
+    const { id: updatingId, ...rest } = data;
     const updatedCar = await prisma.car.update({
       where: { id },
-      data,
+      data: rest,
     });
     return updatedCar;
   } catch (error) {
@@ -169,6 +173,23 @@ export const getUserById = async (id: string) => {
     const clerkUser = await clerkClient.users.getUser(id);
 
     return clerkUser;
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    throw new Error("Could not fetch user");
+  }
+};
+
+export const getRentedCars = async (renterId: string) => {
+  try {
+    const RentedCars = await prisma.car.findMany({
+      where: {
+        renterId,
+        rented: true,
+      },
+    });
+    const reversedRentedCars = RentedCars.reverse();
+
+    return reversedRentedCars;
   } catch (error) {
     console.error("Error fetching user:", error);
     throw new Error("Could not fetch user");
