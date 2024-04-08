@@ -24,6 +24,8 @@ export const CarTypeDefs = gql`
     rented: Boolean!
     rentedId: String
     rentedAt: String
+    daysRented: String
+    renterPhone: String
   }
   type User {
     id: ID!
@@ -51,6 +53,8 @@ export const CarTypeDefs = gql`
     rented: Boolean!
     rentedId: String!
     rentedAt: String!
+    daysRented: String!
+    renterPhone: String!
   }
 
   input CarUpdateInput {
@@ -61,6 +65,8 @@ export const CarTypeDefs = gql`
     rented: Boolean
     rentedId: String
     rentedAt: String
+    daysRented: String
+    renterPhone: String
   }
 
   type Query {

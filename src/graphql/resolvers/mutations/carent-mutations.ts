@@ -26,6 +26,8 @@ export const carMutations = {
         rented: boolean;
         rentedId: string;
         rentedAt: string;
+        daysRented: string;
+        renterPhone: string;
       };
     }
   ) => createCar(input),
@@ -57,6 +59,8 @@ export const carMutations = {
         rented: boolean;
         rentedId: string;
         rentedAt: string;
+        daysRented: string;
+        renterPhone: string;
       };
     }
   ) => {

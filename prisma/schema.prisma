@@ -32,5 +32,7 @@ model Car {
   rented Boolean
   rentedId String
   rentedAt String
+  daysRented String
+  renterPhone String
 
 }
