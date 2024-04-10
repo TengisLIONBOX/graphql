@@ -35,6 +35,5 @@ model Car {
   rentedAt String
   daysRented String
   renterPhone String
-
 }
 
