@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+
 }
 
 datasource db {
@@ -36,3 +37,4 @@ model Car {
   renterPhone String
 
 }
+
