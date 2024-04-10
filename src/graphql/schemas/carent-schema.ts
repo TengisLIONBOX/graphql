@@ -76,6 +76,7 @@ export const CarTypeDefs = gql`
     getCarsByBrand(brand: String): [Car]
     getUserById(id: String): User
     getRentedCars(renterId: String): [Car]
+    getMyRentedCars(rentedId: String): [Car]
   }
   type Mutation {
     createCar(input: CarCreateInput!): Car!

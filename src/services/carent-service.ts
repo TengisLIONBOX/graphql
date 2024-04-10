@@ -153,7 +153,7 @@ export const getCarsByUser = async (renterId: string): Promise<Car[]> => {
     return reversedUserCars;
   } catch (error) {
     console.error(error);
-    throw new GraphQLError("Error fetching user cars");
+    throw new GraphQLError("Error fetch get CarsByUser");
   } finally {
     await prisma.$disconnect();
   }
@@ -175,7 +175,7 @@ export const getUserById = async (id: string) => {
     return clerkUser;
   } catch (error) {
     console.error("Error fetching user:", error);
-    throw new Error("Could not fetch user");
+    throw new Error("Could not fetch getUserById");
   }
 };
 
@@ -192,6 +192,20 @@ export const getRentedCars = async (renterId: string) => {
     return reversedRentedCars;
   } catch (error) {
     console.error("Error fetching user:", error);
-    throw new Error("Could not fetch user");
+    throw new Error("Could not fetch Rented Cars");
+  }
+};
+
+export const getMyRentedCars = async (rentedId: string): Promise<Car[]> => {
+  try {
+    const myRentedCars = await prisma.car.findMany({
+      where: {
+        rentedId,
+      },
+    });
+    return myRentedCars.reverse();
+  } catch (error) {
+    console.error("Error fetching user's rented cars:", error);
+    throw new Error("Failed to fetch user's rented cars");
   }
 };
