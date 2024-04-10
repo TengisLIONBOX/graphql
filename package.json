@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "bun run build && prisma generate",
+    "postinstall": "prisma generate",
     "start": "next start",
     "lint": "next lint",
     "codegen": "bunx graphql-code-generator --config ./src/graphql/codegen.ts"
