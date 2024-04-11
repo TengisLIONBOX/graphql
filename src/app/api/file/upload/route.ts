@@ -8,9 +8,6 @@ cloudinary.config({
 
 export async function POST(request: Request) {
   const formData = await request.formData();
-  console.log("=====================");
-  console.log(formData);
-  console.log("=====================");
   const file = formData.get("file") as File;
   const arrayBuffer = await file.arrayBuffer();
   const buffer = new Uint8Array(arrayBuffer);
